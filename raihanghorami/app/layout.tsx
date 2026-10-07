@@ -32,8 +32,11 @@ export const metadata: Metadata = {
 };
 
 export const viewport: Viewport = {
-  themeColor: '#f4f3ef',
-  colorScheme: 'light',
+  themeColor: [
+    { media: '(prefers-color-scheme: light)', color: '#f4f3ef' },
+    { media: '(prefers-color-scheme: dark)', color: '#141416' },
+  ],
+  colorScheme: 'light dark',
 };
 
 const jsonLd = {
@@ -70,12 +73,14 @@ const jsonLd = {
   ],
 };
 
+const themeScript = `(function(){var d=document.documentElement,t;d.classList.add('js');try{t=localStorage.getItem('theme')}catch(e){}if(t!=='light'&&t!=='dark')t=matchMedia('(prefers-color-scheme: dark)').matches?'dark':'light';d.dataset.theme=t})()`;
+
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <html lang="en-GB" suppressHydrationWarning>
       <head>
-        {/* Enables reveal animations only when JS runs, so content is never hidden without it. */}
-        <script dangerouslySetInnerHTML={{ __html: "document.documentElement.classList.add('js')" }} />
+        {/* Runs before paint: enables reveal animations only with JS, and picks the saved or device theme so there is no flash. */}
+        <script dangerouslySetInnerHTML={{ __html: themeScript }} />
         <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }} />
       </head>
       <body>

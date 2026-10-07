@@ -8,13 +8,13 @@ export default function NotFound() {
       <div className="wrap">
         <p className="kicker">404</p>
         <h1 className="h2" style={{ marginTop: 18 }}>
-          <span style={{ background: 'var(--pink)', padding: '0 .1em', borderRadius: 6 }}>Cut.</span>
+          <span className="hl">Cut.</span>
         </h1>
         <p className="hero-sub" style={{ marginTop: 24 }}>
           This page didn’t make the final edit.
         </p>
         <div className="hero-ctas">
-          <a href="/" className="btn btn-dark">
+          <a href="/" className="btn btn-primary">
             Back to home <ArrowRight />
           </a>
         </div>
