@@ -1,5 +1,5 @@
 /* ============ Tokens (light) ============ */
-/* Palette: Paper #F6F4F1, Stone #E4DED2, Coral #F95C4B, Black #000000 */
+/* Palette: Paper #F6F4F1, Stone #E4DED2, Black #000000, accent: Beyond Edits lilac #C8BEFA */
 :root {
   --bg: #f6f4f1;
   --surface: #fbfaf8;
@@ -15,14 +15,16 @@
   --underline: rgba(0, 0, 0, 0.3);
   --elev: 0 0 0 1px rgba(0, 0, 0, 0.07), 0 12px 32px -14px rgba(0, 0, 0, 0.2);
 
-  /* design-tool overlay colours: coral is the only accent */
-  --accent: #f95c4b;
-  --on-accent: #000000;
+  /* design-tool overlay colours: lilac is the only accent.
+     Fills use the brand lilac; thin lines get a deeper lilac so they hold up on paper. */
+  --accent: #c8befa;
+  --accent-line: #9d8ef0;
+  --on-accent: #0f0c1f;
   --sel: #e4ded2;
-  --handle: var(--accent);
+  --handle: var(--accent-line);
   --handle-ring: var(--bg);
   --hl: var(--accent);
-  --on-hl: #000000;
+  --on-hl: #0f0c1f;
   --focus: var(--ink);
   --band: #000000;
   --band-ink: #f6f4f1;
@@ -57,6 +59,7 @@
 
   --sel: #2b2723;
   --band: #0f0e0d;
+  --accent-line: #c8befa;
 
   color-scheme: dark;
 }
@@ -134,7 +137,7 @@ button {
 
 ::selection {
   background: var(--accent);
-  color: #000000;
+  color: var(--on-accent);
 }
 
 :focus-visible {
@@ -580,9 +583,9 @@ button {
   gap: 7px;
   padding: 5px 11px 5px 9px;
   border-radius: 7px;
-  /* Beyond Edits' own brand colours: lavender with their deep indigo */
-  background: #c8befa;
-  color: #0f0c1f;
+  /* Beyond Edits' own brand colours: lilac with their deep indigo */
+  background: var(--accent);
+  color: var(--on-accent);
   font-family: var(--sans);
   font-size: 13px;
   font-weight: 600;
@@ -912,7 +915,7 @@ button {
 .quote {
   margin-top: 28px;
   padding-left: 18px;
-  border-left: 3px solid var(--accent);
+  border-left: 3px solid var(--accent-line);
   font-family: var(--serif);
   font-style: italic;
   font-size: clamp(24px, 2.4vw, 30px);
@@ -1052,7 +1055,7 @@ button {
   bottom: 0;
   left: 8%;
   width: 2px;
-  background: #f95c4b;
+  background: #9a8af0;
   animation: tl-play 10s linear infinite;
 }
 
@@ -1063,7 +1066,7 @@ button {
   left: -0.5cqw;
   width: calc(1cqw + 2px);
   height: 0.9cqw;
-  background: #f95c4b;
+  background: #9a8af0;
   clip-path: polygon(0 0, 100% 0, 100% 60%, 50% 100%, 0 60%);
 }
 
@@ -1102,7 +1105,7 @@ button {
   flex: none;
   width: 1.7cqw;
   height: 1.7cqw;
-  fill: #f95c4b;
+  fill: #9a8af0;
   animation: pr-pulse 2.4s ease-in-out infinite;
 }
 
@@ -1110,7 +1113,7 @@ button {
   display: inline-block;
   width: 0;
   overflow: hidden;
-  border-right: 1px solid #f95c4b;
+  border-right: 1px solid #9a8af0;
   animation: pr-type 8s steps(18, end) infinite;
 }
 
@@ -1139,7 +1142,7 @@ button {
   position: absolute;
   z-index: 50;
   inset: -7px;
-  border: 2px solid var(--accent);
+  border: 2px solid var(--accent-line);
   border-radius: 29px;
   pointer-events: none;
 }
@@ -1150,7 +1153,7 @@ button {
   height: 12px;
   border-radius: 3px;
   background: #fff;
-  border: 2px solid var(--accent);
+  border: 2px solid var(--accent-line);
 }
 
 .take-sel .tl {
@@ -1550,7 +1553,7 @@ button {
 }
 
 .mug .mark {
-  fill: var(--accent);
+  fill: var(--accent-line);
 }
 
 .mug .steam path {
@@ -1572,7 +1575,7 @@ button {
 
 /* every few seconds the middle wisp turns into a little AI sparkle */
 .mug .spark {
-  fill: var(--accent);
+  fill: var(--accent-line);
   transform-box: fill-box;
   transform-origin: center;
   animation: spark 9.6s ease-in-out infinite;
