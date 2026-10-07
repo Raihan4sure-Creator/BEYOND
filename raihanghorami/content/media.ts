@@ -1,7 +1,7 @@
 import type { Shot } from '@/components/PhotoStack';
 
-/** Round avatar (nav + hello pill): face crop from "Raihan silhouette at lit workstation". */
-export const avatar = '/images/raihan/raihan-avatar.webp';
+/** Round avatar (nav + hello pill): headshot in the black jacket on blue. The tab icons are cut from the same photo. */
+export const avatar = '/images/raihan/raihan-headshot.webp';
 
 /** Photo "takes" in About, front first. From Raihan's Photos (used on the original site). */
 export const shots: Shot[] = [
