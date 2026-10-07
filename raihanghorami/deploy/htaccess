@@ -1,0 +1,17 @@
+# Optional .htaccess for public_html on Hostinger (LiteSpeed/Apache).
+# Merge with any existing rules instead of overwriting them.
+
+ErrorDocument 404 /404.html
+
+<IfModule mod_headers.c>
+  # Hashed build assets never change
+  <FilesMatch "^.*\.(js|css|woff2?)$">
+    Header set Cache-Control "public, max-age=31536000, immutable"
+  </FilesMatch>
+  <FilesMatch "\.(avif|webp|jpg|jpeg|png|svg)$">
+    Header set Cache-Control "public, max-age=2592000"
+  </FilesMatch>
+  <FilesMatch "\.html$">
+    Header set Cache-Control "public, max-age=0, must-revalidate"
+  </FilesMatch>
+</IfModule>
