@@ -1123,6 +1123,8 @@ button {
 }
 
 .take-switch {
+  /* light focus ring in both themes; the default ink ring vanishes on the dark pill */
+  --focus: #f6f4f1;
   position: absolute;
   z-index: 52;
   left: 50%;
