@@ -24,5 +24,5 @@ npm run preview   # serve out/ on http://localhost:4173
 Don't use the archive deploy (`POST …/websites/{domain}/deploy`), and don't wipe `public_html`. The server holds things that aren't in this repo:
 
 - `api/newsletter.php` and `.newsletter-private/`: the newsletter endpoint and its private config
-- `.htaccess`: HTTPS, caching, the 404 page, and redirects from the old `/about`, `/work`, `/contact`, `/writing` and `/notes` pages
+- `.htaccess`: HTTPS, caching, the 404 page, and redirects from the old `/about`, `/work`, `/contact`, `/writing` and `/notes` pages. A copy of the live file is in `deploy/htaccess`. If you change it on the server, update this copy too
 - `images/`: the original photos from the previous site
