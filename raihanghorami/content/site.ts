@@ -11,7 +11,7 @@ export const site = {
   whatsapp: 'https://wa.me/8801856875758?text=Hi%20Raihan%2C%20I%20found%20you%20through%20your%20website.',
   timeZone: 'Asia/Dhaka',
   description:
-    'I run Beyond Edits, a 20-person video editing team in Dhaka. 2,000+ videos edited, ~200M organic views, 4.9★ Top Rated Plus on Upwork.',
+    'I run Beyond Edits, a 20-person in-house video editing team in Dhaka. 2,000+ videos edited, ~200M organic views, 4.9★ Top Rated Plus on Upwork.',
   nav: [
     { href: '/#about', label: 'About' },
     { href: '/#process', label: 'Process' },
@@ -31,7 +31,7 @@ export const site = {
 export const hero = {
   line: 'Good videos are made in the',
   word: 'edit',
-  sub: 'I run Beyond Edits, a 20-person video editing team in Dhaka. The team edits. I make sure it’s right.',
+  sub: 'I run Beyond Edits, a 20-person in-house video editing team in Dhaka. The team edits. I make sure it’s right.',
 };
 
 export const stats = [
