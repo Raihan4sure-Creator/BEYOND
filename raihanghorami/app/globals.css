@@ -881,7 +881,26 @@ button {
   margin-top: 14px;
 }
 
-.about-copy > p {
+.about-panels {
+  display: grid;
+}
+
+/* both takes' text sit in the same cell, so switching never shifts the layout */
+.about-panel {
+  grid-area: 1 / 1;
+  opacity: 0;
+  transform: translateY(8px);
+  transition:
+    opacity 0.5s var(--ease),
+    transform 0.5s var(--ease);
+}
+
+.about-panel.is-on {
+  opacity: 1;
+  transform: none;
+}
+
+.about-panel > p {
   margin-top: 20px;
   font-size: clamp(18px, 1.6vw, 21px);
   color: var(--ink-2);
@@ -956,6 +975,7 @@ button {
     scale(calc(1 - var(--depth) * 0.04));
   transition: transform 0.7s var(--ease);
   cursor: pointer;
+  container-type: inline-size;
 }
 
 .take img {
@@ -964,10 +984,153 @@ button {
   object-fit: cover;
 }
 
-.take.contain img {
-  object-fit: contain;
-  object-position: 50% 100%;
-  padding-top: 8%;
+/* UI on the photos' blank monitors. Multiply keeps it on the white screen and behind him. */
+.screen {
+  position: absolute;
+  z-index: 1;
+  mix-blend-mode: multiply;
+  pointer-events: none;
+}
+
+.screen-timeline {
+  left: 65.6%;
+  top: 38.4%;
+  width: 32.4%;
+  height: 10.4%;
+  display: flex;
+  flex-direction: column;
+  gap: 0.7cqw;
+  padding: 0.5cqw 1cqw;
+}
+
+.tl-ruler {
+  display: flex;
+  align-items: flex-end;
+  height: 2cqw;
+  border-bottom: 1px solid #cfc9bf;
+  background: repeating-linear-gradient(90deg, #cfc9bf 0 1px, transparent 1px 2.2cqw) bottom / 100% 0.6cqw no-repeat;
+  font-family: var(--mono);
+  font-size: 1.25cqw;
+  line-height: 1;
+  color: #8a847b;
+}
+
+.tl-ruler span {
+  padding: 0 0.6cqw 0.3cqw 0;
+  background: #fff;
+}
+
+.tl-track {
+  display: flex;
+  gap: 0.5cqw;
+  height: 2.2cqw;
+}
+
+.tl-v i {
+  display: block;
+  border-radius: 0.4cqw;
+  background: #57514b;
+}
+
+.tl-v i:nth-child(even) {
+  background: #8a847b;
+}
+
+.tl-a {
+  height: 1.8cqw;
+  border-radius: 0.4cqw;
+  background:
+    repeating-linear-gradient(90deg, #a39d94 0 1px, transparent 1px 0.45cqw) center / 100% 70% no-repeat,
+    #ece8e1;
+}
+
+.tl-head {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 8%;
+  width: 2px;
+  background: #f95c4b;
+  animation: tl-play 10s linear infinite;
+}
+
+.tl-head::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -0.5cqw;
+  width: calc(1cqw + 2px);
+  height: 0.9cqw;
+  background: #f95c4b;
+  clip-path: polygon(0 0, 100% 0, 100% 60%, 50% 100%, 0 60%);
+}
+
+@keyframes tl-play {
+  from {
+    left: 4%;
+  }
+  to {
+    left: 96%;
+  }
+}
+
+.screen-prompt {
+  left: 76.4%;
+  top: 30%;
+  width: 21.4%;
+  height: 5.2%;
+}
+
+.pr-bar {
+  display: flex;
+  align-items: center;
+  gap: 0.8cqw;
+  height: 100%;
+  padding: 0 1.2cqw;
+  border: 1px solid #cdc7bd;
+  border-radius: 999px;
+  overflow: hidden;
+  font-family: var(--mono);
+  font-size: 1.5cqw;
+  white-space: nowrap;
+  color: #2b2723;
+}
+
+.pr-spark {
+  flex: none;
+  width: 1.7cqw;
+  height: 1.7cqw;
+  fill: #f95c4b;
+  animation: pr-pulse 2.4s ease-in-out infinite;
+}
+
+.pr-text {
+  display: inline-block;
+  width: 0;
+  overflow: hidden;
+  border-right: 1px solid #f95c4b;
+  animation: pr-type 8s steps(18, end) infinite;
+}
+
+@keyframes pr-type {
+  0%,
+  6% {
+    width: 0;
+  }
+  40%,
+  82% {
+    width: 18ch;
+  }
+  96%,
+  100% {
+    width: 0;
+  }
+}
+
+@keyframes pr-pulse {
+  50% {
+    transform: scale(0.75) rotate(45deg);
+  }
 }
 
 .take-sel {
@@ -1024,29 +1187,54 @@ button {
   text-transform: uppercase;
 }
 
-.take-next {
+.take-switch {
   position: absolute;
   z-index: 52;
-  right: 16px;
+  left: 50%;
   bottom: 16px;
+  translate: -50% 0;
+  display: flex;
+  gap: 4px;
+  padding: 4px;
+  border-radius: 999px;
+  background: rgba(0, 0, 0, 0.55);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.14);
+}
+
+.take-switch button {
   display: inline-flex;
   align-items: center;
   gap: 8px;
-  height: 40px;
-  padding: 0 16px;
+  height: 34px;
+  padding: 0 14px;
   border: 0;
   border-radius: 999px;
-  background: var(--ink);
-  color: var(--bg);
-  font-size: 14px;
+  background: transparent;
+  color: rgba(246, 244, 241, 0.72);
+  font-size: 13.5px;
   font-weight: 500;
+  white-space: nowrap;
   cursor: pointer;
-  box-shadow: 0 10px 24px -10px rgba(0, 0, 0, 0.6);
-  transition: transform 0.3s var(--ease);
+  transition:
+    background-color 0.3s var(--ease),
+    color 0.3s var(--ease);
 }
 
-.take-next:hover {
-  transform: translateY(-2px);
+.take-switch button span {
+  font-family: var(--mono);
+  font-size: 11px;
+  opacity: 0.7;
+}
+
+.take-switch button:hover {
+  color: #f6f4f1;
+}
+
+.take-switch button[aria-selected='true'] {
+  background: #f6f4f1;
+  color: #000000;
 }
 
 /* ============ Beyond Edits touches ============ */
@@ -1517,6 +1705,16 @@ button {
     opacity: 1;
     transform: none;
     transition: none;
+  }
+
+  .tl-head {
+    animation: none !important;
+    left: 42%;
+  }
+
+  .pr-text {
+    animation: none !important;
+    width: 18ch;
   }
 }
 

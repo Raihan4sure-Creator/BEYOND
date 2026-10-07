@@ -9,7 +9,7 @@ export const site = {
   whatsapp: 'https://wa.me/8801856875758?text=Hi%20Raihan%2C%20I%20found%20you%20through%20your%20website.',
   timeZone: 'Asia/Dhaka',
   description:
-    'I run Beyond Edits, a 12-person video editing team in Dhaka. 2,000+ videos edited, ~200M organic views, 4.9★ Top Rated Plus on Upwork.',
+    'I run Beyond Edits, a 20-person video editing team in Dhaka. 2,000+ videos edited, ~200M organic views, 4.9★ Top Rated Plus on Upwork.',
   nav: [
     { href: '/#about', label: 'About' },
     { href: '/#process', label: 'Process' },
@@ -29,14 +29,14 @@ export const site = {
 export const hero = {
   line: 'Good videos are made in the',
   word: 'edit',
-  sub: 'I run Beyond Edits, a 12-person video editing team in Dhaka. The team edits. I make sure it’s right.',
+  sub: 'I run Beyond Edits, a 20-person video editing team in Dhaka. The team edits. I make sure it’s right.',
 };
 
 export const stats = [
   { v: '2,000+', k: 'Videos edited' },
   { v: '~200M', k: 'Organic views' },
   { v: '4.9★', k: 'Top Rated Plus, Upwork' },
-  { v: '12', k: 'People in Dhaka' },
+  { v: '20', k: 'People in Dhaka' },
 ];
 
 export const results = [
@@ -55,11 +55,33 @@ export const process = [
   { label: 'Delivered', icon: 'delivered', c: '116, 208, 144', text: 'Every version you need. Files kept a year.' },
 ] as const;
 
+/** About is told in two takes: the editing business as it is, then where it's going with AI. */
 export const about = {
-  title: 'Hi, I’m Raihan.',
-  text: 'I learned to edit at 16 because I wanted a YouTube channel. The channel didn’t go anywhere. The editing stuck. First clients came from Fiverr. Now it’s a team of 12, and I still watch the cuts. On the side, I build AI stuff. Coffee helps.',
-  quote: 'Not the cheapest. Anyone can be cheap.',
-};
+  takes: [
+    {
+      id: 'edit',
+      label: 'The edit',
+      title: 'Hi, I’m Raihan.',
+      text: 'I learned to edit at 16 because I wanted a YouTube channel. The channel didn’t go anywhere. The editing stuck. First clients came from Fiverr. Now it’s a team of 20, and I still watch the cuts.',
+      quote: 'Not the cheapest. Anyone can be cheap.',
+      img: '/images/raihan/take-edit',
+      alt: 'Raihan Ghorami at his editing desk at night, two bright monitors behind him, hand at his chin',
+      screen: 'timeline',
+    },
+    {
+      id: 'next',
+      label: 'What’s next',
+      title: 'Where this is going.',
+      text: 'I build AI stuff because I like it. Editing has a lot of slow, boring work in it, and that part should be automated. The plan for Beyond Edits is simple: AI does the grunt work, editors keep the taste. Coffee helps.',
+      quote: 'Faster is nice. Better is the point.',
+      img: '/images/raihan/take-next',
+      alt: 'Raihan Ghorami in profile, fingertips raised toward his monitor, working something out',
+      screen: 'prompt',
+    },
+  ],
+} as const;
+
+export type Take = (typeof about.takes)[number];
 
 export const contact = {
   title: ['Got a video?', 'Let’s ', 'talk.'],

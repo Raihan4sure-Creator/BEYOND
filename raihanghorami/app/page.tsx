@@ -1,10 +1,9 @@
+import { AboutTakes } from '@/components/AboutTakes';
 import { Cursor } from '@/components/Cursor';
-import { FounderBadge } from '@/components/FounderBadge';
 import { ArrowRight, ArrowUpRight } from '@/components/Icons';
-import { PhotoStack } from '@/components/PhotoStack';
 import { StepIcon } from '@/components/StepIcon';
 import { delay } from '@/components/delay';
-import { profile, shots } from '@/content/media';
+import { profile } from '@/content/media';
 import { posts } from '@/content/posts';
 import { about, hero, process, results, site, stats } from '@/content/site';
 
@@ -115,27 +114,7 @@ export default function HomePage() {
       {/* ---------- About ---------- */}
       <section id="about" className="band">
         <div className="wrap about-grid">
-          <div data-reveal>
-            <PhotoStack shots={shots}>
-              <FounderBadge className="badge-about" />
-            </PhotoStack>
-          </div>
-
-          <div className="about-copy">
-            <span className="kicker">About</span>
-            <h2 className="h2" data-reveal>
-              {about.title}
-            </h2>
-            <p data-reveal style={delay(80)}>
-              {about.text}
-            </p>
-            <blockquote className="quote" data-reveal style={delay(160)}>
-              “{about.quote}”
-            </blockquote>
-            <a href={`/writing/${note.slug}/`} className="note-link" data-reveal style={delay(220)}>
-              Read my note: {note.title} <ArrowRight size={14} />
-            </a>
-          </div>
+          <AboutTakes takes={about.takes} note={{ href: `/writing/${note.slug}/`, title: note.title }} />
         </div>
       </section>
     </>
