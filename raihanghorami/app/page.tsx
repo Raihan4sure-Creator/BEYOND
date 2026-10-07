@@ -2,8 +2,9 @@ import { Cursor } from '@/components/Cursor';
 import { FounderBadge } from '@/components/FounderBadge';
 import { ArrowRight, ArrowUpRight } from '@/components/Icons';
 import { PhotoStack } from '@/components/PhotoStack';
+import { StepIcon } from '@/components/StepIcon';
 import { delay } from '@/components/delay';
-import { avatar, shots } from '@/content/media';
+import { profile, shots } from '@/content/media';
 import { posts } from '@/content/posts';
 import { about, hero, process, results, site, stats } from '@/content/site';
 
@@ -17,7 +18,7 @@ export default function HomePage() {
         <div className="wrap">
           <p className="hello" data-reveal>
             {/* eslint-disable-next-line @next/next/no-img-element */}
-            <img src={avatar} alt="" width={30} height={30} />
+            <img src={profile} alt="" width={30} height={30} />
             Hi, I’m Raihan Ghorami
           </p>
 
@@ -98,9 +99,9 @@ export default function HomePage() {
           <ol className="steps">
             {process.map((s, i) => (
               <li className="step" key={s.label} data-reveal style={delay(i * 90)}>
-                <span className="step-pill" style={{ ['--d' as string]: `${i * 1.2}s` }}>
-                  <span className="ico" aria-hidden="true">
-                    {String(i + 1).padStart(2, '0')}
+                <span className="step-pill" style={{ ['--c' as string]: s.c, ['--d' as string]: `${i * 1.2}s` }}>
+                  <span className="ico">
+                    <StepIcon name={s.icon} />
                   </span>
                   {s.label}
                 </span>

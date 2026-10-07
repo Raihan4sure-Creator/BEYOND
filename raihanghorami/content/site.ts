@@ -46,13 +46,14 @@ export const results = [
   { name: 'Ray White agents', note: 'Listing videos' },
 ];
 
+/** `c` is the pill's status colour (r, g, b), kept muted on purpose. */
 export const process = [
-  { label: 'Brief', text: 'Footage and a reference. That’s enough to start.' },
-  { label: 'Editing', text: 'One editor owns your video, start to finish.' },
-  { label: 'QC', text: 'Every cut gets checked before you see it.' },
-  { label: 'Your review', text: 'Timestamped notes. Fixes come back fast.' },
-  { label: 'Delivered', text: 'Every version you need. Files kept a year.' },
-];
+  { label: 'Brief', icon: 'brief', c: '176, 172, 246', text: 'Footage and a reference. That’s enough to start.' },
+  { label: 'Editing', icon: 'editing', c: '112, 214, 206', text: 'One editor owns your video, start to finish.' },
+  { label: 'QC', icon: 'qc', c: '192, 168, 244', text: 'Every cut gets checked before you see it.' },
+  { label: 'Your review', icon: 'review', c: '232, 200, 104', text: 'Timestamped notes. Fixes come back fast.' },
+  { label: 'Delivered', icon: 'delivered', c: '116, 208, 144', text: 'Every version you need. Files kept a year.' },
+] as const;
 
 export const about = {
   title: 'Hi, I’m Raihan.',
