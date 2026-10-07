@@ -1,6 +1,7 @@
 import { AboutTakes } from '@/components/AboutTakes';
 import { Cursor } from '@/components/Cursor';
 import { ArrowRight, ArrowUpRight } from '@/components/Icons';
+import { ProcessTimeline } from '@/components/ProcessTimeline';
 import { StepIcon } from '@/components/StepIcon';
 import { delay } from '@/components/delay';
 import { helloFace } from '@/content/media';
@@ -88,6 +89,7 @@ export default function HomePage() {
 
       {/* ---------- Process ---------- */}
       <section id="process" className="band process">
+        <ProcessTimeline />
         <div className="wrap">
           <span className="kicker">Process</span>
           <h2 className="h2" data-reveal>
