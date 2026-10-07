@@ -6,6 +6,8 @@ export const site = {
   workEmail: 'Raihan@beyondedits.agency',
   company: { name: 'Beyond Edits', url: 'https://beyondedits.agency' },
   calendly: 'https://calendly.com/raihan4sure/new-meeting',
+  /** Stripe Payment Link (Beyond Edits Ltd account): the client types any amount, USD, invoice emailed. */
+  pay: 'https://buy.stripe.com/3cIeVf4KG4A29dN2vVdnW0a',
   whatsapp: 'https://wa.me/8801856875758?text=Hi%20Raihan%2C%20I%20found%20you%20through%20your%20website.',
   timeZone: 'Asia/Dhaka',
   description:
@@ -66,7 +68,6 @@ export const about = {
       quote: 'Not the cheapest. Anyone can be cheap.',
       img: '/images/raihan/take-edit',
       alt: 'Raihan Ghorami at his editing desk at night, two bright monitors behind him, hand at his chin',
-      screen: 'timeline',
     },
     {
       id: 'next',
@@ -76,7 +77,6 @@ export const about = {
       quote: 'Faster is nice. Better is the point.',
       img: '/images/raihan/take-next',
       alt: 'Raihan Ghorami in profile, fingertips raised toward his monitor, working something out',
-      screen: 'prompt',
     },
   ],
 } as const;

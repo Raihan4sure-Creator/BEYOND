@@ -66,6 +66,14 @@ export default function PrivacyPage() {
             contract.
           </p>
 
+          <h2>Payments</h2>
+          <p>
+            The Pay page opens a Stripe checkout for Beyond Edits Ltd, my company. Stripe collects your card details, name, email and billing
+            address; card numbers never reach this website or me. Beyond Edits Ltd receives the payment record, including the amount, your name,
+            email and any invoice reference you add, and keeps it for accounting. See <A href="https://stripe.com/privacy">Stripe’s privacy policy</A>.
+          </p>
+          <p>This is needed to take your payment and to meet accounting and tax duties.</p>
+
           <h2>Where information is handled</h2>
           <p>
             I work in Bangladesh; Kit and its subprocessors process information in the US. Kit’s published{' '}

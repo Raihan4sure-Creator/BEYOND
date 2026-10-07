@@ -7,39 +7,6 @@ import { ArrowRight } from './Icons';
 
 const pad = (n: number) => String(n).padStart(2, '0');
 
-/** Take 01's monitor: a small editing timeline with a playhead running over it. */
-function TimelineScreen() {
-  return (
-    <div className="screen screen-timeline" aria-hidden="true">
-      <div className="tl-ruler">
-        <span>00:00:14:08</span>
-      </div>
-      <div className="tl-track tl-v">
-        <i style={{ flex: 3 }} />
-        <i style={{ flex: 5 }} />
-        <i style={{ flex: 2 }} />
-        <i style={{ flex: 4 }} />
-      </div>
-      <div className="tl-track tl-a" />
-      <span className="tl-head" />
-    </div>
-  );
-}
-
-/** Take 02's monitor: an AI prompt typing itself out, right where his fingertips point. */
-function PromptScreen() {
-  return (
-    <div className="screen screen-prompt" aria-hidden="true">
-      <span className="pr-bar">
-        <svg viewBox="-10 -10 20 20" className="pr-spark">
-          <path d="M0 -10Q1.6 -1.6 10 0Q1.6 1.6 0 10Q-1.6 1.6 -10 0Q-1.6 -1.6 0 -10Z" />
-        </svg>
-        <span className="pr-text">find the best take</span>
-      </span>
-    </div>
-  );
-}
-
 /**
  * About, told in two takes. The photo stack and the text switch together:
  * Take 01 is the editing business as it is, Take 02 is where it's going with AI.
@@ -73,7 +40,6 @@ export function AboutTakes({ takes, note }: { takes: readonly Take[]; note: { hr
                   loading="lazy"
                   decoding="async"
                 />
-                {t.screen === 'timeline' ? <TimelineScreen /> : <PromptScreen />}
               </figure>
             );
           })}

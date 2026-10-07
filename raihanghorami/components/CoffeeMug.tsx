@@ -72,7 +72,6 @@ export function CoffeeMug() {
         <g clipPath="url(#mug-inside)">
           <rect className="coffee" x="8" y="50" width="40" height="40" style={{ transform: `translateY(${level}px)` }} />
         </g>
-        <path className="mark" d={star} transform="translate(28 68) scale(0.5)" />
       </svg>
       {say && (
         <span key={say.id} className="mug-say">

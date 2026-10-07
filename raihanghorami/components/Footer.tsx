@@ -56,6 +56,10 @@ export function Footer() {
               Beyond Edits
             </a>{' '}
             ·{' '}
+            <a href="/pay/" className="link-u">
+              Pay
+            </a>{' '}
+            ·{' '}
             <a href="/privacy/" className="link-u">
               Privacy
             </a>
