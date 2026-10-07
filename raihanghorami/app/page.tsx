@@ -2,11 +2,8 @@ import { Clock } from '@/components/Clock';
 import { Cursor } from '@/components/Cursor';
 import { ArrowRight, ArrowUpRight } from '@/components/Icons';
 import { PhysicsPills } from '@/components/PhysicsPills';
-import { Picture } from '@/components/Picture';
-import { VideoCard } from '@/components/VideoCard';
 import { delay } from '@/components/delay';
-import { images } from '@/content/images';
-import { clips, cutout, reviews } from '@/content/media';
+import { cutout, reviews } from '@/content/media';
 import { posts } from '@/content/posts';
 import { about, hero, pills, process, results, site, stats } from '@/content/site';
 
@@ -19,7 +16,7 @@ export default function HomePage() {
       <section className="hero">
         <div className="wrap">
           <p className="hello" data-reveal>
-            <img src="/images/raihan/hero-silhouette-480.jpg" alt="" width={30} height={30} />
+            <img src={cutout.src} alt="" width={30} height={30} />
             Hi, I’m Raihan Ghorami
           </p>
 
@@ -78,8 +75,8 @@ export default function HomePage() {
             <a href={site.calendly} className="btn btn-dark" target="_blank" rel="noopener noreferrer">
               Book a call <ArrowUpRight />
             </a>
-            <a href="#work" className="btn btn-light">
-              See the work <ArrowRight />
+            <a href="#process" className="btn btn-light">
+              How it works <ArrowRight />
             </a>
           </div>
           <p className="rating" data-reveal style={delay(300)}>
@@ -137,32 +134,6 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* ---------- Work ---------- */}
-      {clips.length > 0 && (
-        <section id="work" className="band" style={{ paddingTop: 0 }}>
-          <div className="wrap">
-            <div className="sec-head">
-              <div>
-                <span className="kicker">Work</span>
-                <h2 className="h2" data-reveal>
-                  Recent <em>cuts.</em>
-                </h2>
-              </div>
-              <p className="sec-note" data-reveal>
-                Edited by the Beyond Edits team. Hover to play.
-              </p>
-            </div>
-            <div className="work-grid">
-              {clips.map((c, i) => (
-                <div key={c.src} className={c.span} data-reveal style={delay((i % 3) * 80)}>
-                  <VideoCard {...c} />
-                </div>
-              ))}
-            </div>
-          </div>
-        </section>
-      )}
-
       {/* ---------- Process ---------- */}
       <section id="process" className="band process">
         <div className="wrap" style={{ position: 'relative' }}>
@@ -197,31 +168,25 @@ export default function HomePage() {
         <div className="wrap">
           <div className="about-grid">
             <div className="portrait" data-reveal>
-              {cutout.src ? (
-                // eslint-disable-next-line @next/next/no-img-element
-                <img className="cut" src={cutout.src} width={cutout.width} height={cutout.height} alt="Raihan Ghorami" loading="lazy" />
-              ) : (
-                <div className="photo">
-                  <Picture img={images.hero} sizes="(max-width: 860px) 90vw, 40vw" />
-                </div>
-              )}
+              {/* eslint-disable-next-line @next/next/no-img-element */}
+              <img className="cut" src={cutout.src} width={cutout.width} height={cutout.height} alt="Raihan Ghorami" loading="lazy" />
               <span className="chip chip-a">
-                <span>
-                  <small>{about.chips[0].k}</small>
-                  {about.chips[0].v}
+                  <span>
+                    <small>{about.chips[0].k}</small>
+                    {about.chips[0].v}
+                  </span>
                 </span>
-              </span>
-              <span className="chip chip-b">
-                <span>
-                  <small>{about.chips[1].k}</small>
-                  {about.chips[1].v}
+                <span className="chip chip-b">
+                  <span>
+                    <small>{about.chips[1].k}</small>
+                    {about.chips[1].v}
+                  </span>
                 </span>
-              </span>
-              <span className="chip chip-c">
-                <span className="live">
-                  <i aria-hidden="true" /> Dhaka · <Clock />
+                <span className="chip chip-c">
+                  <span className="live">
+                    <i aria-hidden="true" /> Dhaka · <Clock />
+                  </span>
                 </span>
-              </span>
             </div>
 
             <div className="about-copy">

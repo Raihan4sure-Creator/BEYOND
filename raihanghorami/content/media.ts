@@ -1,17 +1,5 @@
-export type Clip = {
-  src: string;
-  poster: string;
-  title: string;
-  meta: string;
-  ratio: string;
-  span: string; // grid-column span class
-};
-
-/** Filled from the Beyond Edits clips (public on beyondedits.agency). */
-export const clips: Clip[] = [];
-
-/** Cut-out portrait (transparent WebP). Empty string = use the framed photo instead. */
-export const cutout = { src: '', width: 0, height: 0 };
+/** Cut-out of Raihan (from his intro video on beyondedits.agency). */
+export const cutout = { src: '/images/raihan/raihan-cutout.webp', width: 836, height: 780 };
 
 export type Review = { text: string; by: string };
 /** Client messages sent on Upwork, quoted without names (private messages, so no names or companies). */

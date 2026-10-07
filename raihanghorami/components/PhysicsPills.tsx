@@ -129,8 +129,12 @@ export function PhysicsPills({ items }: { items: readonly Pill[] }) {
   }, []);
 
   return (
-    <div ref={box} className={`pills${live ? '' : ' static'}`}>
-      <p className="kicker pills-hint">{live ? 'Things I care about. Drag them around.' : 'Things I care about'}</p>
+    <div className="pills-wrap">
+      <p className="kicker">
+        Things I care about<span className="on-hover"> · drag them around</span>
+        <span className="on-touch"> · tap one</span>
+      </p>
+      <div ref={box} className={`pills${live ? '' : ' static'}`}>
       {items.map((p, i) => (
         <span
           key={p.t}
@@ -146,6 +150,7 @@ export function PhysicsPills({ items }: { items: readonly Pill[] }) {
           {p.t}
         </span>
       ))}
+      </div>
     </div>
   );
 }

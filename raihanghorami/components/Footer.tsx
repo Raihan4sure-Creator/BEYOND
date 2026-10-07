@@ -5,7 +5,7 @@ import { ArrowUpRight, WhatsApp } from './Icons';
 
 export function Footer() {
   return (
-    <footer id="contact" className="band contact" style={{ paddingBottom: 0 }}>
+    <footer id="contact" className="band contact" style={{ paddingTop: 'clamp(32px, 4vw, 56px)', paddingBottom: 0 }}>
       <div className="wrap">
         <p className="kicker" data-reveal>
           Contact

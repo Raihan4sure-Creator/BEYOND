@@ -11,10 +11,10 @@ export const site = {
   description:
     'I run Beyond Edits, a 12-person video editing team in Dhaka. 2,000+ videos edited, ~200M organic views, 4.9★ Top Rated Plus on Upwork.',
   nav: [
-    { href: '/#work', label: 'Work' },
     { href: '/#process', label: 'Process' },
     { href: '/#about', label: 'About' },
     { href: '/#reviews', label: 'Reviews' },
+    { href: '/#contact', label: 'Contact' },
   ],
   social: [
     { href: 'https://www.linkedin.com/in/raihan4sure/', label: 'LinkedIn' },
