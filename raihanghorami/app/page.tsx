@@ -3,7 +3,7 @@ import { Cursor } from '@/components/Cursor';
 import { ArrowRight, ArrowUpRight } from '@/components/Icons';
 import { StepIcon } from '@/components/StepIcon';
 import { delay } from '@/components/delay';
-import { profile } from '@/content/media';
+import { helloFace } from '@/content/media';
 import { posts } from '@/content/posts';
 import { about, hero, process, results, site, stats } from '@/content/site';
 
@@ -17,7 +17,7 @@ export default function HomePage() {
         <div className="wrap">
           <p className="hello" data-reveal>
             {/* eslint-disable-next-line @next/next/no-img-element */}
-            <img src={profile} alt="" width={30} height={30} />
+            <img src={helloFace} alt="" width={30} height={30} />
             Hi, I’m Raihan Ghorami
           </p>
 

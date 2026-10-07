@@ -580,8 +580,9 @@ button {
   gap: 7px;
   padding: 5px 11px 5px 9px;
   border-radius: 7px;
-  background: var(--accent);
-  color: var(--on-accent);
+  /* Beyond Edits' own brand colours: lavender with their deep indigo */
+  background: #c8befa;
+  color: #0f0c1f;
   font-family: var(--sans);
   font-size: 13px;
   font-weight: 600;
@@ -591,6 +592,7 @@ button {
 }
 
 .frame-label:hover {
+  background: #d6cefc;
   transform: translateY(calc(-100% - 10px));
 }
 
