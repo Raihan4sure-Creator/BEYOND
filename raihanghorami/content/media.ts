@@ -1,19 +1,12 @@
-/** Cut-out of Raihan (from his intro video on beyondedits.agency). */
-export const cutout = { src: '/images/raihan/raihan-cutout.webp', width: 836, height: 780 };
+import type { Shot } from '@/components/PhotoStack';
 
-export type Review = { text: string; by: string };
-/** Client messages sent on Upwork, quoted without names (private messages, so no names or companies). */
-export const reviews: Review[] = [
-  {
-    text: 'Fantastic work again on the first video. Looking forward to continuing to work with you.',
-    by: 'VP of Operations, US HR company · YouTube series',
-  },
-  {
-    text: 'Overall great job and I think you got our vibe… you set the bar high! Really sleek!',
-    by: 'Software company · Paid social ads',
-  },
-  {
-    text: 'You do a great job of addressing the comments I share, so thank you for being on point always.',
-    by: 'Brand owner · Promo videos',
-  },
+/** Small round avatars (nav + hello pill). */
+export const avatars = {
+  nav: '/images/raihan/raihan-cutout.webp',
+  hello: '/images/raihan/raihan-cutout.webp',
+};
+
+/** Photo "takes" in About, front first. */
+export const shots: Shot[] = [
+  { src: '/images/raihan/raihan-cutout.webp', alt: 'Raihan Ghorami', fit: 'contain', pos: '50% 100%' },
 ];

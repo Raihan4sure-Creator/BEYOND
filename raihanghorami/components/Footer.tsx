@@ -50,7 +50,11 @@ export function Footer() {
             ))}
           </nav>
           <span>
-            © {new Date().getFullYear()} {site.name} ·{' '}
+            © {new Date().getFullYear()} {site.name}, founder of{' '}
+            <a href={site.company.url} className="link-u" target="_blank" rel="noopener noreferrer">
+              Beyond Edits
+            </a>{' '}
+            ·{' '}
             <a href="/privacy/" className="link-u">
               Privacy
             </a>

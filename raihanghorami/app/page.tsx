@@ -1,9 +1,11 @@
 import { Clock } from '@/components/Clock';
 import { Cursor } from '@/components/Cursor';
 import { ArrowRight, ArrowUpRight } from '@/components/Icons';
+import { FounderBadge } from '@/components/FounderBadge';
+import { PhotoStack } from '@/components/PhotoStack';
 import { PhysicsPills } from '@/components/PhysicsPills';
 import { delay } from '@/components/delay';
-import { cutout, reviews } from '@/content/media';
+import { avatars, shots } from '@/content/media';
 import { posts } from '@/content/posts';
 import { about, hero, pills, process, results, site, stats } from '@/content/site';
 
@@ -16,7 +18,7 @@ export default function HomePage() {
       <section className="hero">
         <div className="wrap">
           <p className="hello" data-reveal>
-            <img src={cutout.src} alt="" width={30} height={30} />
+            <img src={avatars.hello} alt="" width={30} height={30} />
             Hi, I’m Raihan Ghorami
           </p>
 
@@ -29,6 +31,11 @@ export default function HomePage() {
                 <span className="knob bl" />
                 <span className="knob tr" />
               </span>
+              <a className="frame-label" href={site.company.url} target="_blank" rel="noopener noreferrer">
+                <span className="be-mark" aria-hidden="true" />
+                Founder · Beyond Edits
+                <ArrowUpRight size={12} />
+              </a>
               <span className="sel-cursor" aria-hidden="true">
                 <Cursor label="Raihan" color="#6e56f0" />
               </span>
@@ -167,26 +174,27 @@ export default function HomePage() {
       <section id="about" className="band">
         <div className="wrap">
           <div className="about-grid">
-            <div className="portrait" data-reveal>
-              {/* eslint-disable-next-line @next/next/no-img-element */}
-              <img className="cut" src={cutout.src} width={cutout.width} height={cutout.height} alt="Raihan Ghorami" loading="lazy" />
-              <span className="chip chip-a">
-                  <span>
-                    <small>{about.chips[0].k}</small>
-                    {about.chips[0].v}
+            <div data-reveal>
+              <PhotoStack shots={shots}>
+                <FounderBadge className="badge-about" />
+                <span className="chip chip-a">
+                    <span>
+                      <small>{about.chips[0].k}</small>
+                      {about.chips[0].v}
+                    </span>
                   </span>
-                </span>
-                <span className="chip chip-b">
-                  <span>
-                    <small>{about.chips[1].k}</small>
-                    {about.chips[1].v}
+                  <span className="chip chip-b">
+                    <span>
+                      <small>{about.chips[1].k}</small>
+                      {about.chips[1].v}
+                    </span>
                   </span>
-                </span>
-                <span className="chip chip-c">
-                  <span className="live">
-                    <i aria-hidden="true" /> Dhaka · <Clock />
+                  <span className="chip chip-c">
+                    <span className="live">
+                      <i aria-hidden="true" /> Dhaka · <Clock />
+                    </span>
                   </span>
-                </span>
+              </PhotoStack>
             </div>
 
             <div className="about-copy">
@@ -214,32 +222,6 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* ---------- Reviews ---------- */}
-      {reviews.length > 0 && (
-        <section id="reviews" className="band" style={{ paddingTop: 0 }}>
-          <div className="wrap">
-            <div className="sec-head">
-              <div>
-                <span className="kicker">Reviews</span>
-                <h2 className="h2" data-reveal>
-                  What clients <em>say.</em>
-                </h2>
-              </div>
-              <p className="sec-note" data-reveal>
-                From client messages on Upwork. 4.9★ · Top Rated Plus.
-              </p>
-            </div>
-            <div className="reviews">
-              {reviews.map((r, i) => (
-                <blockquote className="review" key={i} data-reveal style={delay(i * 80)}>
-                  <p>“{r.text}”</p>
-                  <footer>{r.by}</footer>
-                </blockquote>
-              ))}
-            </div>
-          </div>
-        </section>
-      )}
     </>
   );
 }

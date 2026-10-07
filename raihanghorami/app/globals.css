@@ -312,8 +312,16 @@ button {
   padding-top: 3px;
 }
 
-.nav-logo span {
-  color: var(--pink-ink);
+.nav-logo {
+  overflow: hidden;
+  padding: 0;
+}
+
+.nav-logo img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 50%;
 }
 
 .nav-pill {
@@ -407,7 +415,7 @@ button {
 .edit-wrap {
   position: relative;
   display: inline-block;
-  margin-top: clamp(6px, 1vw, 14px);
+  margin-top: clamp(34px, 3.4vw, 46px);
 }
 
 .edit-word {
@@ -758,7 +766,7 @@ button {
   }
 
   .edit-wrap {
-    margin-top: 34px;
+    margin-top: 46px;
   }
 }
 
@@ -1104,30 +1112,12 @@ button {
 /* ============ About ============ */
 .about-grid {
   display: grid;
-  grid-template-columns: minmax(0, 6fr) minmax(0, 5fr);
+  grid-template-columns: minmax(0, 5fr) minmax(0, 6fr);
   gap: clamp(32px, 5vw, 72px);
   align-items: center;
 }
 
-.portrait {
-  position: relative;
-  aspect-ratio: 16 / 11;
-  border-radius: 28px;
-  background:
-    radial-gradient(120% 80% at 50% 100%, var(--lilac), transparent 70%),
-    linear-gradient(180deg, #ecebf7, #f7e6ef);
-  box-shadow: var(--shadow);
-}
 
-.portrait .cut {
-  position: absolute;
-  left: 50%;
-  bottom: 0;
-  height: 94%;
-  width: auto;
-  max-width: none;
-  transform: translateX(-50%);
-}
 
 
 
@@ -1179,8 +1169,8 @@ button {
     grid-template-columns: 1fr;
   }
 
-  .portrait {
-    max-width: 440px;
+  .stack {
+    max-width: 400px;
     width: 100%;
     margin-inline: auto;
   }
@@ -1289,46 +1279,6 @@ button {
 .pills.static .pill {
   position: static;
   transform: rotate(var(--r, 0deg));
-}
-
-/* ============ Reviews ============ */
-.reviews {
-  display: grid;
-  grid-template-columns: repeat(3, minmax(0, 1fr));
-  gap: 14px;
-}
-
-.review {
-  display: flex;
-  flex-direction: column;
-  gap: 14px;
-  padding: 24px;
-  border-radius: var(--radius);
-  background: var(--card);
-  box-shadow: var(--shadow);
-}
-
-.review .stars {
-  color: #f5a524;
-  letter-spacing: 3px;
-}
-
-.review p {
-  font-family: var(--serif);
-  font-size: 23px;
-  line-height: 1.22;
-}
-
-.review footer {
-  margin-top: auto;
-  font-size: 13.5px;
-  color: var(--ink-3);
-}
-
-@media (max-width: 960px) {
-  .reviews {
-    grid-template-columns: 1fr;
-  }
 }
 
 /* ============ Contact / footer ============ */
@@ -1529,5 +1479,263 @@ button {
 
   .status > span:last-child {
     opacity: 1;
+  }
+}
+
+/* ============ Beyond Edits touches ============ */
+.be-mark {
+  display: inline-block;
+  width: 1em;
+  height: 1em;
+  flex: none;
+  background: currentColor;
+  -webkit-mask: url('/images/brand/be-mark.png') center / contain no-repeat;
+  mask: url('/images/brand/be-mark.png') center / contain no-repeat;
+}
+
+.nav-pill a.nav-be {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  margin-left: 4px;
+  color: var(--ink);
+  background: var(--lilac);
+}
+
+.nav-pill a.nav-be:hover {
+  background: #cfc4ff;
+}
+
+.nav-be .be-mark {
+  font-size: 13px;
+}
+
+/* Figma-style frame name on the selected "edit." */
+.frame-label {
+  position: absolute;
+  z-index: 4;
+  top: 6%;
+  left: calc(clamp(132px, 21vw, 292px) * -0.07);
+  transform: translateY(calc(-100% - 8px));
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  padding: 5px 11px 5px 9px;
+  border-radius: 7px;
+  background: var(--pink-ink);
+  color: #fff;
+  font-family: var(--sans);
+  font-size: 13px;
+  font-weight: 600;
+  letter-spacing: 0;
+  white-space: nowrap;
+  box-shadow: 0 6px 16px -8px rgba(212, 96, 154, 0.8);
+  transition:
+    transform 0.3s var(--ease),
+    background-color 0.3s var(--ease);
+}
+
+.frame-label:hover {
+  background: #c04d88;
+  transform: translateY(calc(-100% - 10px));
+}
+
+.frame-label .be-mark {
+  font-size: 12px;
+}
+
+/* spinning founder sticker */
+.badge {
+  position: absolute;
+  z-index: 6;
+  width: 116px;
+  height: 116px;
+  border-radius: 50%;
+  display: grid;
+  place-items: center;
+  background: var(--yellow);
+  color: var(--ink);
+  box-shadow: 0 14px 30px -14px rgba(19, 19, 19, 0.55);
+  transition: transform 0.4s var(--ease);
+}
+
+.badge:hover {
+  transform: scale(1.06) rotate(-4deg);
+}
+
+.badge-ring {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  animation: spin 18s linear infinite;
+}
+
+.badge:hover .badge-ring {
+  animation-duration: 6s;
+}
+
+.badge-ring text {
+  font-family: var(--mono);
+  font-size: 10.4px;
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  fill: currentColor;
+}
+
+.badge-mark {
+  width: 34px;
+  height: 34px;
+  background: var(--ink);
+  -webkit-mask: url('/images/brand/be-mark.png') center / contain no-repeat;
+  mask: url('/images/brand/be-mark.png') center / contain no-repeat;
+}
+
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.badge-about {
+  right: -34px;
+  top: -34px;
+}
+
+/* ============ Photo takes (About) ============ */
+.stack {
+  position: relative;
+  aspect-ratio: 4 / 5;
+}
+
+.take {
+  --depth: 0;
+  position: absolute;
+  inset: 0;
+  margin: 0;
+  overflow: hidden;
+  border-radius: 24px;
+  background:
+    radial-gradient(120% 80% at 50% 100%, var(--lilac), transparent 70%),
+    linear-gradient(180deg, #ecebf7, #f7e6ef);
+  box-shadow: var(--shadow);
+  transform: translate(calc(var(--depth) * 18px), calc(var(--depth) * -14px)) rotate(calc(var(--depth) * 4.5deg))
+    scale(calc(1 - var(--depth) * 0.04));
+  transition: transform 0.7s var(--ease);
+  cursor: pointer;
+}
+
+.take img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.take.contain img {
+  object-fit: contain;
+  object-position: 50% 100%;
+  padding-top: 8%;
+}
+
+.take-sel {
+  position: absolute;
+  z-index: 50;
+  inset: -7px;
+  border: 2px solid var(--pink-ink);
+  border-radius: 29px;
+  pointer-events: none;
+}
+
+.take-sel .knob {
+  position: absolute;
+  width: 12px;
+  height: 12px;
+  border-radius: 3px;
+  background: #fff;
+  border: 2px solid var(--pink-ink);
+}
+
+.take-sel .tl {
+  left: -7px;
+  top: -7px;
+}
+
+.take-sel .tr {
+  right: -7px;
+  top: -7px;
+}
+
+.take-sel .bl {
+  left: -7px;
+  bottom: -7px;
+}
+
+.take-sel .br {
+  right: -7px;
+  bottom: -7px;
+}
+
+.take-label {
+  position: absolute;
+  z-index: 51;
+  left: -7px;
+  top: -36px;
+  padding: 4px 10px;
+  border-radius: 7px;
+  background: var(--pink-ink);
+  color: #fff;
+  font-family: var(--mono);
+  font-size: 11.5px;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
+
+.take-next {
+  position: absolute;
+  z-index: 52;
+  right: 16px;
+  bottom: 16px;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  height: 40px;
+  padding: 0 16px;
+  border: 0;
+  border-radius: 999px;
+  background: var(--ink);
+  color: #fff;
+  font-size: 14px;
+  font-weight: 500;
+  cursor: pointer;
+  box-shadow: 0 10px 24px -10px rgba(19, 19, 19, 0.6);
+  transition: transform 0.3s var(--ease);
+}
+
+.take-next:hover {
+  transform: translateY(-2px);
+}
+
+.stack .chip {
+  z-index: 53;
+}
+
+@media (max-width: 620px) {
+  .stack .chip-b {
+    display: none;
+  }
+
+  .badge {
+    width: 92px;
+    height: 92px;
+  }
+
+  .badge-about {
+    right: -10px;
+    top: -28px;
+  }
+
+  .badge-mark {
+    width: 26px;
+    height: 26px;
   }
 }
