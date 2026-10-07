@@ -1,19 +1,19 @@
 /* ============ Tokens (light) ============ */
-/* Palette: Paper #F6F4F1, Stone #E4DED2, Black #000000, accent: Beyond Edits lilac #C8BEFA */
+/* Palette: Paper #F6F4F1, Stone #E4DED2, Ink #0F0C1F (in place of black), accent: Beyond Edits lilac #C8BEFA */
 :root {
   --bg: #f6f4f1;
   --surface: #fbfaf8;
   --glass: rgba(251, 250, 248, 0.84);
-  --ink: #000000;
-  --ink-hover: #2b2a28;
-  --ink-2: rgba(0, 0, 0, 0.66);
-  --ink-3: rgba(0, 0, 0, 0.56);
-  --line: rgba(0, 0, 0, 0.1);
-  --line-2: rgba(0, 0, 0, 0.16);
-  --hover: rgba(0, 0, 0, 0.05);
-  --grid: rgba(0, 0, 0, 0.05);
-  --underline: rgba(0, 0, 0, 0.3);
-  --elev: 0 0 0 1px rgba(0, 0, 0, 0.07), 0 12px 32px -14px rgba(0, 0, 0, 0.2);
+  --ink: #0f0c1f;
+  --ink-hover: #2b2740;
+  --ink-2: rgba(15, 12, 31, 0.68);
+  --ink-3: rgba(15, 12, 31, 0.58);
+  --line: rgba(15, 12, 31, 0.1);
+  --line-2: rgba(15, 12, 31, 0.16);
+  --hover: rgba(15, 12, 31, 0.05);
+  --grid: rgba(15, 12, 31, 0.05);
+  --underline: rgba(15, 12, 31, 0.3);
+  --elev: 0 0 0 1px rgba(15, 12, 31, 0.07), 0 12px 32px -14px rgba(15, 12, 31, 0.22);
 
   /* design-tool overlay colours: lilac is the only accent.
      Fills use the brand lilac; thin lines get a deeper lilac so they hold up on paper. */
@@ -26,7 +26,7 @@
   --hl: var(--accent);
   --on-hl: #0f0c1f;
   --focus: var(--ink);
-  --band: #000000;
+  --band: #0f0c1f;
   --band-ink: #f6f4f1;
 
   --serif: 'Instrument Serif', 'Iowan Old Style', 'Times New Roman', serif;
@@ -43,9 +43,9 @@
 
 /* ============ Tokens (dark) ============ */
 :root[data-theme='dark'] {
-  --bg: #000000;
-  --surface: #121110;
-  --glass: rgba(18, 17, 16, 0.78);
+  --bg: #0f0c1f;
+  --surface: #1a1630;
+  --glass: rgba(26, 22, 48, 0.78);
   --ink: #f6f4f1;
   --ink-hover: #ffffff;
   --ink-2: rgba(246, 244, 241, 0.7);
@@ -55,10 +55,10 @@
   --hover: rgba(246, 244, 241, 0.07);
   --grid: rgba(246, 244, 241, 0.05);
   --underline: rgba(246, 244, 241, 0.35);
-  --elev: 0 0 0 1px rgba(246, 244, 241, 0.1), 0 14px 36px -14px rgba(0, 0, 0, 0.8);
+  --elev: 0 0 0 1px rgba(246, 244, 241, 0.1), 0 14px 36px -14px rgba(5, 4, 12, 0.8);
 
-  --sel: #2b2723;
-  --band: #0f0e0d;
+  --sel: #2a2545;
+  --band: #161229;
   --accent-line: #c8befa;
 
   color-scheme: dark;
@@ -631,7 +631,7 @@ button {
   flex: none;
   fill: var(--ink);
   stroke: var(--bg);
-  filter: drop-shadow(0 2px 3px rgba(0, 0, 0, 0.22));
+  filter: drop-shadow(0 2px 3px rgba(15, 12, 31, 0.25));
 }
 
 .cursor b {
@@ -1132,7 +1132,7 @@ button {
   gap: 4px;
   padding: 4px;
   border-radius: 999px;
-  background: rgba(0, 0, 0, 0.55);
+  background: rgba(15, 12, 31, 0.6);
   backdrop-filter: blur(10px);
   -webkit-backdrop-filter: blur(10px);
   box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.14);
@@ -1169,7 +1169,7 @@ button {
 
 .take-switch button[aria-selected='true'] {
   background: #f6f4f1;
-  color: #000000;
+  color: #0f0c1f;
 }
 
 /* ============ Beyond Edits touches ============ */
@@ -1194,7 +1194,7 @@ button {
   place-items: center;
   background: var(--ink);
   color: var(--bg);
-  box-shadow: 0 14px 30px -14px rgba(0, 0, 0, 0.6);
+  box-shadow: 0 14px 30px -14px rgba(15, 12, 31, 0.55);
   transition: transform 0.4s var(--ease);
 }
 
