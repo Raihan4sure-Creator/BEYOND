@@ -1,5 +1,4 @@
 import type { Metadata } from 'next';
-import Link from 'next/link';
 import { notFound } from 'next/navigation';
 import { ArrowLeft } from '@/components/Icons';
 import { pageMeta } from '@/content/meta';
@@ -42,24 +41,19 @@ export default async function PostPage({ params }: { params: Promise<Params> }) 
   };
 
   return (
-    <article className="article">
+    <article className="article wrap">
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }} />
-      <div className="wrap">
-        <header className="article-head">
-          <Link href="/writing/" className="label link">
-            <ArrowLeft size={13} /> All writing
-          </Link>
-          <h1 className="h1-page" data-reveal>
-            {post.title}
-          </h1>
-          <div className="byline" data-reveal>
-            <span className="label">By {site.name}</span>
-            <span className="label">{post.category}</span>
-            <time className="label" dateTime={post.date}>
-              {formatDate(post.date)}
-            </time>
-          </div>
-        </header>
+      <div className="article-card">
+        <a href="/" className="kicker back">
+          <ArrowLeft size={13} /> Home
+        </a>
+        <h1>{post.title}</h1>
+        <div className="byline">
+          <span className="kicker">{post.category}</span>
+          <time className="kicker" dateTime={post.date}>
+            {formatDate(post.date)}
+          </time>
+        </div>
 
         <div className="prose">
           {post.intro.map((t, i) => (
@@ -80,12 +74,6 @@ export default async function PostPage({ params }: { params: Promise<Params> }) 
               </ul>
             );
           })}
-        </div>
-
-        <div className="mt-40" style={{ paddingBottom: 'var(--band-tight)', maxWidth: 680 }}>
-          <Link href="/writing/" className="arrow-link link">
-            <ArrowLeft /> Back to writing
-          </Link>
         </div>
       </div>
     </article>

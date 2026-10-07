@@ -10,24 +10,22 @@ export const metadata: Metadata = pageMeta({
 });
 
 const A = ({ href, children }: { href: string; children: React.ReactNode }) => (
-  <a href={href} target="_blank" rel="noopener noreferrer" className="link-u" style={{ color: 'var(--fg)' }}>
+  <a href={href} target="_blank" rel="noopener noreferrer" className="link-u">
     {children}
   </a>
 );
 
 export default function PrivacyPage() {
   return (
-    <article className="article">
-      <div className="wrap">
-        <header className="article-head">
-          <p className="label">Last updated 14 September 2026</p>
-          <h1 className="h1-page">Privacy.</h1>
-        </header>
+    <article className="article wrap">
+      <div className="article-card">
+        <p className="kicker">Last updated 7 October 2026</p>
+        <h1>Privacy.</h1>
 
         <div className="prose">
           <p className="intro">
             I’m Raihan Ghorami, the controller for this website and its personal newsletter, based in Dhaka, Bangladesh. Contact{' '}
-            <a href={`mailto:${site.email}`} className="link-u" style={{ color: 'var(--fg)' }}>
+            <a href={`mailto:${site.email}`} className="link-u">
               {site.email}
             </a>
             . This newsletter is separate from Beyond Edits’ client communications.
@@ -58,8 +56,8 @@ export default function PrivacyPage() {
 
           <h2>Conversations and bookings</h2>
           <p>
-            Continuing from the enquiry form puts your topic, budget and summary in a Calendly URL. You enter contact details there. These answers
-            do not subscribe you to the newsletter. WhatsApp opens separately. See <A href="https://calendly.com/legal/privacy-notice">Calendly’s notice</A>{' '}
+            Booking a call opens Calendly, where you enter your details. Booking does not subscribe you to the newsletter. WhatsApp opens
+            separately. See <A href="https://calendly.com/legal/privacy-notice">Calendly’s notice</A>{' '}
             and <A href="https://www.whatsapp.com/legal/privacy-policy">WhatsApp’s policy</A>. I use correspondence to answer you or discuss
             requested work, keeping it while relevant to that conversation or relationship.
           </p>
@@ -85,7 +83,6 @@ export default function PrivacyPage() {
             <A href="https://ico.org.uk/make-a-complaint/">UK ICO</A> or your local EU data protection authority.
           </p>
         </div>
-        <div style={{ paddingBottom: 'var(--band-tight)' }} />
       </div>
     </article>
   );

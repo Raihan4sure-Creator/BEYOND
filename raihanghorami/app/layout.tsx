@@ -7,7 +7,6 @@ import './globals.css';
 import { Footer } from '@/components/Footer';
 import { Nav } from '@/components/Nav';
 import { RevealObserver } from '@/components/RevealObserver';
-import { WhatsApp } from '@/components/Icons';
 import { site } from '@/content/site';
 
 const title = `${site.name} · ${site.role}`;
@@ -33,8 +32,8 @@ export const metadata: Metadata = {
 };
 
 export const viewport: Viewport = {
-  themeColor: '#0b0a0f',
-  colorScheme: 'dark',
+  themeColor: '#f4f3ef',
+  colorScheme: 'light',
 };
 
 const jsonLd = {
@@ -83,13 +82,9 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         <a href="#main" className="skip">
           Skip to content
         </a>
-        <div className="playhead" aria-hidden="true" />
         <Nav />
         <main id="main">{children}</main>
         <Footer />
-        <a href={site.whatsapp} className="wa" target="_blank" rel="noopener noreferrer" aria-label="Chat on WhatsApp">
-          <WhatsApp /> <span>WhatsApp</span>
-        </a>
         <RevealObserver />
       </body>
     </html>

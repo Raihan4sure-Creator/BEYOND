@@ -1,304 +1,280 @@
-import Link from 'next/link';
 import { Clock } from '@/components/Clock';
+import { Cursor } from '@/components/Cursor';
 import { ArrowRight, ArrowUpRight } from '@/components/Icons';
-import { Label } from '@/components/Label';
+import { PhysicsPills } from '@/components/PhysicsPills';
 import { Picture } from '@/components/Picture';
+import { VideoCard } from '@/components/VideoCard';
 import { delay } from '@/components/delay';
 import { images } from '@/content/images';
-import { formatDate, posts } from '@/content/posts';
-import { home, site, updated, work } from '@/content/site';
+import { clips, cutout, reviews } from '@/content/media';
+import { posts } from '@/content/posts';
+import { about, hero, pills, process, results, site, stats } from '@/content/site';
 
 export default function HomePage() {
-  const latest = posts[0];
+  const note = posts[0];
 
   return (
     <>
-      {/* Hero */}
+      {/* ---------- Hero: the headline is being edited ---------- */}
       <section className="hero">
-        <div className="wrap grid hero-grid">
-          <div className="hero-copy">
-            <p className="label" data-reveal>
-              <span className="rec" aria-hidden="true" />
-              {home.eyebrow} <span aria-hidden="true">·</span> Dhaka
-            </p>
-            <h1 className="h1" data-reveal style={delay(80)}>
-              Raihan <span className="italic">Ghorami</span>
-            </h1>
-            <p className="lead" data-reveal style={delay(160)}>
-              {home.lead}
-            </p>
-            <div className="hero-ctas" data-reveal style={delay(240)}>
-              <Link href="/work/" className="btn btn-primary">
-                See the work <ArrowRight />
-              </Link>
-              <Link href="/about/" className="btn btn-ghost">
-                About me
-              </Link>
-            </div>
-          </div>
-
-          <figure className="hero-media" data-reveal style={delay(200)}>
-            <div className="frame">
-              <Picture img={images.hero} sizes="(max-width: 960px) 90vw, 33vw" priority />
-            </div>
-            <figcaption className="caption">
-              <span>{home.photoCaption}</span>
-              <span>
-                <Clock /> GMT+6
-              </span>
-            </figcaption>
-          </figure>
-        </div>
-      </section>
-
-      {/* Context */}
-      <section className="band-tight rule-top">
-        <div className="wrap grid context-grid">
-          <Label n={1}>{home.context.label}</Label>
-          <p className="statement" data-reveal>
-            {home.context.statement}
+        <div className="wrap">
+          <p className="hello" data-reveal>
+            <img src="/images/raihan/hero-silhouette-480.jpg" alt="" width={30} height={30} />
+            Hi, I’m Raihan Ghorami
           </p>
-          <p className="body" data-reveal style={delay(100)}>
-            {home.context.body}
-          </p>
-        </div>
-      </section>
 
-      {/* Work */}
-      <section className="band rule-top">
-        <div className="wrap">
-          <div className="sec-head">
-            <Label n={2}>{home.work.label}</Label>
-            <h2 className="h2" data-reveal>
-              {home.work.title}
-            </h2>
-            <p className="body" data-reveal style={delay(100)}>
-              {home.work.intro}
-            </p>
-          </div>
-
-          <ul className="rows">
-            {work.map((item, i) => {
-              const inner = (
-                <>
-                  <span className="row-index">{String(i + 1).padStart(2, '0')}</span>
-                  <div>
-                    <h3 className="row-title">{item.title}</h3>
-                    <p className="row-meta">{item.role}</p>
-                  </div>
-                  <p className="body">{item.body}</p>
-                  <span className="row-arrow">{item.href ? <ArrowUpRight size={20} /> : null}</span>
-                </>
-              );
-              return (
-                <li key={item.title} data-reveal style={delay(i * 60)}>
-                  {item.href ? (
-                    <a href={item.href} className="row" target="_blank" rel="noopener noreferrer">
-                      {inner}
-                    </a>
-                  ) : (
-                    <div className="row">{inner}</div>
-                  )}
-                </li>
-              );
-            })}
-          </ul>
-
-          <figure className="feature" data-reveal>
-            <div className="frame zoom">
-              <Picture img={images.desk} sizes="(max-width: 1400px) 94vw, 1360px" />
-            </div>
-            <figcaption className="caption">
-              <span>{home.work.deskCaption}</span>
-              <span>Updated {updated}</span>
-            </figcaption>
-          </figure>
-
-          <div className="mt-40">
-            <Link href="/work/" className="arrow-link link">
-              All work <ArrowRight />
-            </Link>
-          </div>
-        </div>
-      </section>
-
-      {/* Services */}
-      <section className="band rule-top">
-        <div className="wrap">
-          <div className="sec-head">
-            <Label n={3}>{home.services.label}</Label>
-            <h2 className="h2" data-reveal>
-              {home.services.title}
-            </h2>
-          </div>
-          <div className="cols">
-            {home.services.items.map((s, i) => (
-              <article className="col" key={s.title} data-reveal style={delay(i * 80)}>
-                <span className="row-index" style={{ paddingTop: 0 }}>
-                  {String(i + 1).padStart(2, '0')}
-                </span>
-                <h3 className="h3">{s.title}</h3>
-                <p className="small">{s.body}</p>
-                <ul className="tags">
-                  {s.tags.map((t) => (
-                    <li className="tag" key={t}>
-                      {t}
-                    </li>
-                  ))}
-                </ul>
-              </article>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* Company */}
-      <section className="band surface company">
-        <div className="wrap">
-          <div className="sec-head" style={{ marginBottom: 'clamp(40px, 5vw, 64px)' }}>
-            <Label n={4}>{home.company.label}</Label>
-            <h2 className="h2" data-reveal>
-              {home.company.title}
-            </h2>
-          </div>
-        </div>
-
-        <figure data-reveal>
-          <div className="frame">
-            <Picture
-              img={images.coverWide}
-              sizes="100vw"
-              mobile={{ img: images.coverPortrait, maxWidth: 720, sizes: '100vw' }}
-            />
-          </div>
-        </figure>
-
-        <div className="wrap">
-          <div className="grid company-body">
-            <p className="statement" data-reveal>
-              {home.company.statement}
-            </p>
-            <div className="company-side" data-reveal style={delay(100)}>
-              <p className="body">{home.company.body}</p>
-              <div>
-                <p className="label">{home.company.formatsLabel}</p>
-                <ul className="tags mt-16">
-                  {home.company.formats.map((f) => (
-                    <li className="tag" key={f}>
-                      {f}
-                    </li>
-                  ))}
-                </ul>
-              </div>
-              <a href={site.company.url} target="_blank" rel="noopener noreferrer" className="btn btn-ghost" style={{ alignSelf: 'flex-start' }}>
-                Visit Beyond Edits <ArrowUpRight />
-              </a>
-            </div>
-          </div>
-
-          <dl className="stats">
-            {home.company.stats.map((s, i) => (
-              <div className="stat" key={s.k} data-reveal style={delay(i * 60)}>
-                <dt>{s.k}</dt>
-                <dd>{s.v}</dd>
-              </div>
-            ))}
-          </dl>
-        </div>
-      </section>
-
-      {/* Currently */}
-      <section className="band">
-        <div className="wrap grid split">
-          <div>
-            <Label n={5}>{home.currently.label}</Label>
-            <h2 className="h2 mt-24" data-reveal>
-              {home.currently.title}
-            </h2>
-          </div>
-          <dl className="dl" data-reveal style={delay(100)}>
-            {home.currently.items.map((c) => (
-              <div key={c.k}>
-                <dt>{c.k}</dt>
-                <dd>{c.v}</dd>
-              </div>
-            ))}
-          </dl>
-        </div>
-      </section>
-
-      {/* Writing */}
-      <section className="band-tight rule-top">
-        <div className="wrap">
-          <div className="sec-head" style={{ marginBottom: 'clamp(32px, 4vw, 56px)' }}>
-            <Label n={6}>{home.notes.label}</Label>
-            <h2 className="h2" data-reveal>
-              {home.notes.title}
-            </h2>
-          </div>
-          <Link href={`/writing/${latest.slug}/`} className="note-card" data-reveal>
-            <div>
-              <p className="label">
-                {latest.category} <span aria-hidden="true">·</span> {formatDate(latest.date)}
-              </p>
-              <h3 className="row-title">{latest.title}</h3>
-              <p className="body">{latest.description}</p>
-            </div>
-            <span className="btn btn-ghost">
-              Read the note <ArrowRight />
+          <h1>
+            <span className="hero-line" style={{ display: 'block' }} data-reveal>
+              {hero.line}
             </span>
-          </Link>
+            <span className="edit-wrap" data-reveal style={delay(120)}>
+              <span className="sel" aria-hidden="true">
+                <span className="knob bl" />
+                <span className="knob tr" />
+              </span>
+              <span className="sel-cursor" aria-hidden="true">
+                <Cursor label="Raihan" color="#6e56f0" />
+              </span>
+              <span className="edit-word">{hero.word}.</span>
+              <span className="sparkle" aria-hidden="true">
+                ✨
+              </span>
+
+              <span className="float f-comment" aria-hidden="true">
+                <span className="comment">
+                  <span className="avatar">R</span>
+                  <span>
+                    <b>
+                      Raihan<span className="tc">00:18</span>
+                    </b>
+                    {hero.comment}
+                  </span>
+                </span>
+              </span>
+              <span className="float f-status" aria-hidden="true">
+                <span className="status">
+                  {hero.statuses.map((s) => (
+                    <span key={s.label}>
+                      <i style={{ background: s.color }} />
+                      {s.label}
+                      {s.label === 'Approved' ? ' ✓' : ''}
+                    </span>
+                  ))}
+                </span>
+              </span>
+              <span className="float f-editor drift-a" aria-hidden="true">
+                <Cursor label="Editor" color="#1d84f2" />
+              </span>
+              <span className="float f-qc drift-b" aria-hidden="true">
+                <Cursor label="QC" color="#14a862" />
+              </span>
+            </span>
+          </h1>
+
+          <p className="hero-sub" data-reveal style={delay(200)}>
+            {hero.sub}
+          </p>
+          <div className="hero-ctas" data-reveal style={delay(260)}>
+            <a href={site.calendly} className="btn btn-dark" target="_blank" rel="noopener noreferrer">
+              Book a call <ArrowUpRight />
+            </a>
+            <a href="#work" className="btn btn-light">
+              See the work <ArrowRight />
+            </a>
+          </div>
+          <p className="rating" data-reveal style={delay(300)}>
+            <span className="stars" aria-hidden="true">
+              ★★★★★
+            </span>
+            4.9 on Upwork · Top Rated Plus
+          </p>
+
+          <div className="timeline" aria-hidden="true" data-reveal style={delay(340)}>
+            <div className="ruler">
+              {['00:00', '00:05', '00:10', '00:15', '00:20', '00:25', '00:30'].map((t, i) => (
+                <span key={t} className={i % 2 ? 'hide-m' : undefined}>
+                  {t}
+                </span>
+              ))}
+            </div>
+            <div className="track">
+              <span className="track-name">V1</span>
+              {hero.timeline.map((c) => (
+                <span key={c.label} className={`clip${c.hideMobile ? ' hide-m' : ''}`} style={{ background: c.bg, flex: c.flex }}>
+                  {c.label}
+                </span>
+              ))}
+            </div>
+            <div className="track">
+              <span className="track-name">A1</span>
+              <span className="wave" />
+            </div>
+            <span className="playhead" />
+          </div>
         </div>
       </section>
 
-      {/* Off the clock */}
-      <section className="band rule-top" style={{ paddingBottom: 'var(--band-tight)' }}>
-        <div className="wrap grid split">
-          <div>
-            <Label n={7}>{home.offClock.label}</Label>
-            <h2 className="h2 mt-24" data-reveal>
-              {home.offClock.title}
-            </h2>
-          </div>
-          <div data-reveal style={delay(100)}>
-            <p className="statement" style={{ fontSize: 'clamp(26px, 2.6vw, 38px)' }}>
-              {home.offClock.lead}
-            </p>
-            <p className="body mt-24">{home.offClock.body}</p>
-          </div>
-        </div>
-
-        <ul className="strip" aria-label="Things on my desk">
-          {images.slides.map((img) => (
-            <li className="frame" key={img.name}>
-              <Picture img={img} sizes="(max-width: 820px) 60vw, 340px" />
-            </li>
-          ))}
-        </ul>
-
+      {/* ---------- Proof ---------- */}
+      <section className="band" style={{ paddingTop: 'clamp(56px, 6vw, 88px)' }} aria-label="Results">
         <div className="wrap">
-          <dl className="facts">
-            {home.offClock.facts.map((f, i) => (
-              <div key={f.k} data-reveal style={delay(i * 60)}>
-                <dt>{f.k}</dt>
-                <dd>{f.v}</dd>
+          <div className="stats">
+            {stats.map((s, i) => (
+              <div className="stat" key={s.k} data-reveal style={delay(i * 70)}>
+                <b>{s.v}</b>
+                <span>{s.k}</span>
               </div>
             ))}
-          </dl>
-          <p className="small mt-40">
-            Also on{' '}
-            {site.elsewhere.map((e, i) => (
-              <span key={e.href}>
-                {i > 0 && ' and '}
-                <a href={e.href} target="_blank" rel="noopener noreferrer me" className="link-u" style={{ color: 'var(--fg)' }}>
-                  {e.label}
-                </a>
+          </div>
+        </div>
+        <div className="marquee" aria-label="Clients and results">
+          <div className="marquee-track">
+            {[...results, ...results, ...results, ...results].map((r, i) => (
+              <span className="marquee-item" key={i} aria-hidden={i >= results.length ? 'true' : undefined}>
+                {r.name} <small>{r.note}</small>
               </span>
             ))}
-            .
-          </p>
+          </div>
         </div>
       </section>
+
+      {/* ---------- Work ---------- */}
+      {clips.length > 0 && (
+        <section id="work" className="band" style={{ paddingTop: 0 }}>
+          <div className="wrap">
+            <div className="sec-head">
+              <div>
+                <span className="kicker">Work</span>
+                <h2 className="h2" data-reveal>
+                  Recent <em>cuts.</em>
+                </h2>
+              </div>
+              <p className="sec-note" data-reveal>
+                Edited by the Beyond Edits team. Hover to play.
+              </p>
+            </div>
+            <div className="work-grid">
+              {clips.map((c, i) => (
+                <div key={c.src} className={c.span} data-reveal style={delay((i % 3) * 80)}>
+                  <VideoCard {...c} />
+                </div>
+              ))}
+            </div>
+          </div>
+        </section>
+      )}
+
+      {/* ---------- Process ---------- */}
+      <section id="process" className="band process">
+        <div className="wrap" style={{ position: 'relative' }}>
+          <div className="sec-head">
+            <div>
+              <span className="kicker">Process</span>
+              <h2 className="h2" data-reveal>
+                How a video moves
+                <br />
+                through <em>Beyond Edits.</em>
+              </h2>
+            </div>
+          </div>
+          <ol className="steps">
+            {process.map((s, i) => (
+              <li className="step" key={s.label} data-reveal style={delay(i * 90)}>
+                <span className="glow" style={{ ['--c' as string]: s.c, ['--d' as string]: `${i * 1}s` }}>
+                  <span className="ico" aria-hidden="true">
+                    {s.icon}
+                  </span>
+                  {s.label}
+                </span>
+                <p>{s.text}</p>
+              </li>
+            ))}
+          </ol>
+        </div>
+      </section>
+
+      {/* ---------- About ---------- */}
+      <section id="about" className="band">
+        <div className="wrap">
+          <div className="about-grid">
+            <div className="portrait" data-reveal>
+              {cutout.src ? (
+                // eslint-disable-next-line @next/next/no-img-element
+                <img className="cut" src={cutout.src} width={cutout.width} height={cutout.height} alt="Raihan Ghorami" loading="lazy" />
+              ) : (
+                <div className="photo">
+                  <Picture img={images.hero} sizes="(max-width: 860px) 90vw, 40vw" />
+                </div>
+              )}
+              <span className="chip chip-a">
+                <span>
+                  <small>{about.chips[0].k}</small>
+                  {about.chips[0].v}
+                </span>
+              </span>
+              <span className="chip chip-b">
+                <span>
+                  <small>{about.chips[1].k}</small>
+                  {about.chips[1].v}
+                </span>
+              </span>
+              <span className="chip chip-c">
+                <span className="live">
+                  <i aria-hidden="true" /> Dhaka · <Clock />
+                </span>
+              </span>
+            </div>
+
+            <div className="about-copy">
+              <span className="kicker">About</span>
+              <h2 className="h2" style={{ marginTop: 14 }} data-reveal>
+                {about.title}
+              </h2>
+              {about.lines.map((l, i) => (
+                <p key={i} data-reveal style={delay(80 + i * 60)}>
+                  {l}
+                </p>
+              ))}
+              <p className="quote" data-reveal style={delay(220)}>
+                “{about.quote}”<span>How I run Beyond Edits</span>
+              </p>
+              <p style={{ marginTop: 28 }} data-reveal>
+                <a href={`/writing/${note.slug}/`} className="link-u">
+                  Read my note: {note.title}
+                </a>
+              </p>
+            </div>
+          </div>
+
+          <PhysicsPills items={pills} />
+        </div>
+      </section>
+
+      {/* ---------- Reviews ---------- */}
+      {reviews.length > 0 && (
+        <section id="reviews" className="band" style={{ paddingTop: 0 }}>
+          <div className="wrap">
+            <div className="sec-head">
+              <div>
+                <span className="kicker">Reviews</span>
+                <h2 className="h2" data-reveal>
+                  What clients <em>say.</em>
+                </h2>
+              </div>
+              <p className="sec-note" data-reveal>
+                From client messages on Upwork. 4.9★ · Top Rated Plus.
+              </p>
+            </div>
+            <div className="reviews">
+              {reviews.map((r, i) => (
+                <blockquote className="review" key={i} data-reveal style={delay(i * 80)}>
+                  <p>“{r.text}”</p>
+                  <footer>{r.by}</footer>
+                </blockquote>
+              ))}
+            </div>
+          </div>
+        </section>
+      )}
     </>
   );
 }
