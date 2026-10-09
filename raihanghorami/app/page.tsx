@@ -4,7 +4,6 @@ import { ArrowRight, ArrowUpRight } from '@/components/Icons';
 import { ProcessTimeline } from '@/components/ProcessTimeline';
 import { StepIcon } from '@/components/StepIcon';
 import { delay } from '@/components/delay';
-import { helloFace } from '@/content/media';
 import { posts } from '@/content/posts';
 import { about, hero, process, results, site, stats } from '@/content/site';
 
@@ -17,8 +16,6 @@ export default function HomePage() {
       <section className="hero">
         <div className="wrap">
           <p className="hello" data-reveal>
-            {/* eslint-disable-next-line @next/next/no-img-element */}
-            <img src={helloFace} alt="" width={30} height={30} />
             Hi, I’m Raihan Ghorami
           </p>
 
